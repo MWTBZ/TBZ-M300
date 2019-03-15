@@ -1,2 +1,2 @@
 # TBZ-M300
-LB01
+Modul 300
