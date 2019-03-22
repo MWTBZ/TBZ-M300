@@ -38,22 +38,21 @@ Vagrant.configure("2") do |config|
      " > /var/www/html/index.html
     
      sudo useradd samba --shell /bin/false                                     #Add User "samba"
-     echo Test | passwd samba --stdin
+     echo Test | passwd samba --stdin                                          # Set Password of user "samba"
      
      sudo useradd samba2 --shell /bin/false                                    #Add User "samba2"
-     echo samba2 | passwd Test2 --stdin
+     echo samba2 | passwd Test2 --stdin                                        # Set Password of user "samba2"
 
      sudo apt-get install -y samba
-     #sudo smbpasswd -a samba                                                   #Define samba-Password for User
-     (echo Test; echo Test) | smbpasswd -s -a samba
-     (echo Test2; echo Test2) | smbpasswd -s -a samba2
+     (echo Test; echo Test) | smbpasswd -s -a samba                            #Define samba-Password for User "samba"
+     (echo Test2; echo Test2) | smbpasswd -s -a samba2                         #Define samba-Password for User "samba2"
 
     sudo mkdir /var/FileShare
 
      sudo echo "
      
 # HTML-Share
-[SambaShare]
+[HTMLShare]
   comment = Foldershare for Apache
   path = /var/www/html
   read only = no
@@ -67,7 +66,7 @@ Vagrant.configure("2") do |config|
      sudo echo "
      
 # File-Share
-[File]
+[FileShare]
   comment = Foldershare for Files
   path = /var/FileShare
   read only = no
@@ -81,6 +80,7 @@ Vagrant.configure("2") do |config|
      sudo /etc/init.d/smbd restart
 
      sudo chmod 777 /var/www/html
+     sudo chmod 777 /var/FileShare
 
      sudo service smbd restart
      
