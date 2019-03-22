@@ -36,7 +36,7 @@ Ein zweiter Ordner wird erstellt, der als Fileshare dient. Dieser wird auch übe
 Für die Berechtigungen werden zwei Benutzer erstellet, welche je nur auf einen der beiden Ordner Zugriffsrechte haben.
 
 ### Netzwerkplan
-![](Images\Netzwerkplan.png)  
+![](/Images/Netzwerkplan.png)  
 
 ### Vagrant-File
 Das Vagrant-File ist das Zentrum der Automation. Hier wird alles festgelegt; Jede Konfiguration, alle Einstellungen, die auszuführenden Befehlen etc.
