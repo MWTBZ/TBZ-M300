@@ -1,4 +1,13 @@
 # M300 - LB01
+## Inhaltsverzeichnis
+
+1. [Einleitung](#Einleitung)
+2. [Lernumgebung](#Lernumgebung)
+3. [Projekt Dokumentation](#Projekt-Dokumentation)
+4. [Testing](#Testing)
+5. [Fazit / Reflexion](#Fazit-/-Reflexion)
+
+
 ## Einleitung
 Dies ist die Dokumentation zur LB01 im Modul 300. Wir hatten den Auftrag mit Vagrant ein oder mehrere Service/s automatisch zu installieren.
 Ich habe mir die Aufgabe gesetzt einen Sambaserver aufzusetzten und zusätzlich noch einen Apache als demonstration für einen Freigegebenen Ordner.  
@@ -67,7 +76,7 @@ SHELL
 ```
 
 #### Firewall
-Da ich meine VM in einem öffentlichen Netz habe, brauche ich eine Firewall. Damit der Webserver trotzdem noch erreichbar sein muss, erstelle ich eine Regel welche den Port 80 öffnet. Für Samba muss ebenfalls der Port 445 geöffnet werden.  
+Da ich meine VM in einem öffentlichen Netz habe, brauche ich eine Firewall. Damit der Webserver trotzdem noch erreichbar sein muss, erstelle ich eine Regel welche den Port 80 öffnet. Für Samba muss ebenfalls der Port 445 geöffnet werden. Damit man SSH auch benutzen kann, muss ebenfalls noch der Port 22 freigegeben werden.  
 Durch das `-y` kann die Benutzereingabe mitgegeben werden.
 ```
 sudo apt-get install ufw
@@ -102,11 +111,11 @@ echo "
 #### Samba
 Bevor Samba installiert wird, erstelle ich zwei Benutzer die dann für Samba berechtigt werden.
 ```
-sudo useradd samba --shell /bin/false                     #Add User "samba"
-echo Test | passwd samba --stdin                          # Set Password of user "samba"
+sudo useradd samba --shell /bin/false                   #Add User "samba"
+echo Test | passwd samba --stdin                        # Set Password of user "samba"
 
-sudo useradd samba2 --shell /bin/false                    #Add User "samba2"
-echo Test2 | passwd samba2 --stdin                        # Set Password of user "samba2"
+sudo useradd samba2 --shell /bin/false                  #Add User "samba2"
+echo Test2 | passwd samba2 --stdin                      # Set Password of user "samba2"
 ```
 Nun wird Samba installiert und für beide Benutzer wird noch ein Samba-Passwort erstellt. 
 ```
@@ -183,9 +192,9 @@ Um zu testen, ob alles richtig installiert ist,hab ich folgende Tabelle benützt
 | Firewall | Port 445 ist offen | Explorer öffnen<br> **\\\10.71.13.20** | Freigegebene Ordner<br>werden angezeigt |
 
 **Samba Freigabe**  
-![](\Images\SambaShare.png)  
+![](/Images/SambaShare.png)  
 **Webserver**  
-![](\Images\Webserver.png)
+![](/Images/Webserver.png)
 
 
 ***
