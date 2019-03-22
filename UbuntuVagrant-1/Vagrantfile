@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.define "samba" do |smb|
     smb.vm.box = "ubuntu/xenial64"
-    smb.vm.network "public_network", ip: "10.71.13.20"
+    smb.vm.network "public_network"#, ip: "10.71.13.20"
 
     smb.vm.provider "virtualbox" do |smb|
       smb.memory = "1024"
@@ -9,16 +9,13 @@ Vagrant.configure("2") do |config|
     end
 
     smb.vm.hostname = "Samba-LB01"
-  end                                                                                               
-                                                                                                    #config.vm.network "forwarded_port", guest: 80, host: 8080 #, host_ip: "127.0.0.1"
-                                                                                                    #config.vm.network "forwarded_port", guest: 445, host: 445, protocol:"tcp"
-                                                                                                    #config.vm.network "forwarded_port", guest: 137, host: 137, protocol:"udp"
-                                                                                                    #config.vm.network "forwarded_port", guest: 138, host: 138, protocol:"udp"
-                                                                                                    #config.vm.network "forwarded_port", guest: 139, host: 139, protocol:"tcp"
+  end 
 
    config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get install ufw
-    sudo ufw enable -y
+    sudo ufw --force enable
+    sudo ufw default deny incoming
+    sudo ufw allow 22/tcp
     sudo ufw allow 80/tcp
     sudo ufw allow 445/tcp
 
@@ -37,15 +34,20 @@ Vagrant.configure("2") do |config|
 </html>
      " > /var/www/html/index.html
     
+     #sudo useradd admin --shell /bin/false                                     #Add User "samba"
+     #echo Admin1234 | passwd admin --stdin                                     # Set Password of user "samba"
+     #usermod -aG sudo admin
+
      sudo useradd samba --shell /bin/false                                     #Add User "samba"
      echo Test | passwd samba --stdin                                          # Set Password of user "samba"
-     
+
      sudo useradd samba2 --shell /bin/false                                    #Add User "samba2"
-     echo samba2 | passwd Test2 --stdin                                        # Set Password of user "samba2"
+     echo Test2 | passwd samba2 --stdin                                        # Set Password of user "samba2"
 
      sudo apt-get install -y samba
      (echo Test; echo Test) | smbpasswd -s -a samba                            #Define samba-Password for User "samba"
      (echo Test2; echo Test2) | smbpasswd -s -a samba2                         #Define samba-Password for User "samba2"
+     #(echo Admin1234; echo Admin1234) | smbpasswd -s -a admin                  #Define samba-Password for User "admin"
 
     sudo mkdir /var/FileShare
 
@@ -85,7 +87,7 @@ Vagrant.configure("2") do |config|
      sudo service smbd restart
      
      
-     sudo ufw enable -y
+     #sudo ufw enable -y
 
    SHELL
 end

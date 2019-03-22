@@ -1,7 +1,9 @@
-# LB01
+# M300 - LB01
 ## Einleitung
 Dies ist die Dokumentation zur LB01 im Modul 300. Wir hatten den Auftrag mit Vagrant ein oder mehrere Service/s automatisch zu installieren.
-Ich habe mir die Aufgabe gesetzt einen Sambaserver aufzusetzten und zusätzlich noch einen Apache als demonstration für einen Freigegebenen Ordner.
+Ich habe mir die Aufgabe gesetzt einen Sambaserver aufzusetzten und zusätzlich noch einen Apache als demonstration für einen Freigegebenen Ordner.  
+Mit Linux haben wir schon viel gearbeitet. Deshalb habe ich in Linux schon gewisse Grundkenntnisse. Ich fande es es bisschen blöd, dass wir nicht mit VM Ware arbeiten konnten, da ich seit beginn der Lehre nur mit VM Ware meine VM mache. Jedoch sind die Virtualisierungssoftwares nicht allzu verschieden. Un dzum Glück funktioniert Virtualbox parallel mit VM Ware. Vagrant kannte ich vor diesem Modul noch nicht. Es hört sich daber sehr interessant an.
+
 ***
 ## Lernumgebung
 ### Git
@@ -64,7 +66,9 @@ Da ich meine VM in einem öffentlichen Netz habe, brauche ich eine Firewall. Dam
 Durch das `-y` kann die Benutzereingabe mitgegeben werden.
 ```
 sudo apt-get install ufw
-sudo ufw enable -y
+sudo ufw --force enable
+sudo ufw default deny incoming
+sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 445/tcp
 ```
@@ -97,7 +101,7 @@ sudo useradd samba --shell /bin/false                     #Add User "samba"
 echo Test | passwd samba --stdin                          # Set Password of user "samba"
 
 sudo useradd samba2 --shell /bin/false                    #Add User "samba2"
-echo samba2 | passwd Test2 --stdin                        # Set Password of user "samba2"
+echo Test2 | passwd samba2 --stdin                        # Set Password of user "samba2"
 ```
 Nun wird Samba installiert und für beide Benutzer wird noch ein Samba-Passwort erstellt. 
 ```
