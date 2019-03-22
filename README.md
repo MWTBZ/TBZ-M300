@@ -11,7 +11,7 @@
 ## Einleitung
 Dies ist die Dokumentation zur LB01 im Modul 300. Wir hatten den Auftrag mit Vagrant ein oder mehrere Service/s automatisch zu installieren.
 Ich habe mir die Aufgabe gesetzt einen Sambaserver aufzusetzten und zusätzlich noch einen Apache als demonstration für einen Freigegebenen Ordner.  
-Mit Linux haben wir schon viel gearbeitet. Deshalb habe ich in Linux schon gewisse Grundkenntnisse. Ich fande es es bisschen blöd, dass wir nicht mit VM Ware arbeiten konnten, da ich seit beginn der Lehre nur mit VM Ware meine VM mache. Jedoch sind die Virtualisierungssoftwares nicht allzu verschieden. Un dzum Glück funktioniert Virtualbox parallel mit VM Ware. Vagrant kannte ich vor diesem Modul noch nicht. Es hört sich daber sehr interessant an.
+Mit Linux haben wir schon viel gearbeitet. Deshalb habe ich in Linux schon gewisse Grundkenntnisse. Ich fande es es bisschen blöd, dass wir nicht mit VM Ware arbeiten konnten, da ich seit beginn der Lehre nur mit VM Ware meine VM mache. Jedoch sind die Virtualisierungssoftwares nicht allzu verschieden. Und zum Glück funktioniert Virtualbox parallel mit VM Ware. Vagrant kannte ich vor diesem Modul noch nicht. Es hört sich daber sehr interessant an.
 
 ***
 ## Lernumgebung
