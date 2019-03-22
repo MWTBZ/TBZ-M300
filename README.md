@@ -38,7 +38,7 @@ Damit eine VM automatisch aufgesetzt werden kann, braucht man noch eine Virtuali
 Die Vagrant-VM wird mit einer Linuxbox aufgesetzt. Ich benutze die "ubuntu/xenial64"-Box. 
 ***
 
-## Projekt Dokumentation
+## Projektdokumentation
 ### Idee
 Meine Idee war, dass ich eine VM erstelle und auf der **Samba** installieren. Ich werde mit Samba zwei Ordner freigeben. Der Erste wird der HTML-Folder eines **Apache** Webservers sein, in dem man die Index.html Datei bearbeiten kann.
 Ein zweiter Ordner wird erstellt, der als Fileshare dient. Dieser wird auch über Samba freigegeben.
@@ -198,7 +198,7 @@ Um zu testen, ob alles richtig installiert ist,hab ich folgende Tabelle benützt
 
 
 ***
-## Fazit / Reflexion
+## Fazit
 Zu Beginn des Moduls war es ein wenig viel aufs Mal. Doch durch das repetieren, wurde vieles klar. Beim erarbeiten der LB01 ging alles recht gut voran. Bei der Konfiguration von Samba gab es das Problem, das man nicht auf die Freigabe zugreifen konnte, wenn die VM im NAT war.   
 Ich musste also der VM die vorgegebene IP geben und ins öffentliche Netz stellen, damit man Samba nutzen konnte. Es gibt nur noch ein Problem, und zwar wenn man sich über denn Explorer in die Freigabe begibt und sich mit dem ersten User anmeldet. Kann man sich nicht mehr mit dem zweiten User anmelden. Windows erkennt wenn man sich auf dem gleichen Samba-Server mit mehreren Benutzern anmelden will und verhindert es. Erst nach einem Neustart kann man sich mit dem zweiten User wieder anmelden.
 
