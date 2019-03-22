@@ -3,9 +3,9 @@
 
 1. [Einleitung](#Einleitung)
 2. [Lernumgebung](#Lernumgebung)
-3. [Projekt Dokumentation](#Projekt-Dokumentation)
+3. [Projekt Dokumentation](#Projektdokumentation)
 4. [Testing](#Testing)
-5. [Fazit / Reflexion](#Fazit-/-Reflexion)
+5. [Fazit / Reflexion](#Fazit)
 
 
 ## Einleitung
