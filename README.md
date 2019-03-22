@@ -35,7 +35,7 @@ Mit Vagrant kann man in einem File mehrere VMs definieren, die dann automatisch 
 Damit eine VM automatisch aufgesetzt werden kann, braucht man noch eine Virtualisierungssoftware. Da Vagrant nur VirtualBox voll unterstützt, werden wir VirtualBox verwenden.
 
 ### Linux
-Die Vagrant-VM wird mit einer Linuxbox aufgesetzt.
+Die Vagrant-VM wird mit einer Linuxbox aufgesetzt. Ich benutze die "ubuntu/xenial64"-Box. 
 ***
 
 ## Projekt Dokumentation
