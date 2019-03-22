@@ -25,6 +25,8 @@ Mit Vagrant kann man in einem File mehrere VMs definieren, die dann automatisch 
 ### VirtualBox
 Damit eine VM automatisch aufgesetzt werden kann, braucht man noch eine Virtualisierungssoftware. Da Vagrant nur VirtualBox voll unterstützt, werden wir VirtualBox verwenden.
 
+### Linux
+Die Vagrant-VM wird mit einer Linuxbox aufgesetzt.
 ***
 
 ## Projekt Dokumentation
@@ -32,6 +34,9 @@ Damit eine VM automatisch aufgesetzt werden kann, braucht man noch eine Virtuali
 Meine Idee war, dass ich eine VM erstelle und auf der **Samba** installieren. Ich werde mit Samba zwei Ordner freigeben. Der Erste wird der HTML-Folder eines **Apache** Webservers sein, in dem man die Index.html Datei bearbeiten kann.
 Ein zweiter Ordner wird erstellt, der als Fileshare dient. Dieser wird auch über Samba freigegeben.
 Für die Berechtigungen werden zwei Benutzer erstellet, welche je nur auf einen der beiden Ordner Zugriffsrechte haben.
+
+### Netzwerkplan
+![](\Images\Netzwerkplan.png)  
 
 ### Vagrant-File
 Das Vagrant-File ist das Zentrum der Automation. Hier wird alles festgelegt; Jede Konfiguration, alle Einstellungen, die auszuführenden Befehlen etc.
@@ -144,6 +149,16 @@ sudo echo "
 " >> /etc/samba/smb.conf
 ```
 Jetzt setzt man noch die lokalen Berechtigungen.
+> 0 – no permission  
+> 1 – execute  
+> 2 – write  
+> 3 – write and execute  
+> 4 – read  
+> 5 – read and execute  
+> 6 – read and write  
+> 7 – read, write, and execute<br>
+
+Die drei Zahlen zeigen die drei Klassen: Owner, Group, Others
 ```
 sudo chmod 777 /var/www/html
 sudo chmod 777 /var/FileShare
@@ -159,13 +174,18 @@ Um zu testen, ob alles richtig installiert ist,hab ich folgende Tabelle benützt
 
 | Service | Testfall | Beschreibung | Resultat |
 |:--:|:--:|:--|:--|
-| Webserver | Webseite erreichbar | Browser öffnen<br>**http://10.71.13.20** | Webseite kann aufgerufen werden |
-| Samba | Samba erreichbar | Explorer öffnen<br> **\\\10.71.13.20** | Freigegebene Ordner<br>werden angezeigt |
+| Webserver | Webseite erreichbar | Browser öffnen<br>**http://10.71.13.20** | Webseite kann aufgerufen werden<br>*Siehe Bild 2* |
+| Samba | Samba erreichbar | Explorer öffnen<br> **\\\10.71.13.20** | Freigegebene Ordner<br>werden angezeigt<br>*Siehe Bild 1* |
 | Samba | Berechtigung<br>HTMLShare | Windows Explorer öffnen<br> **\\\10.71.13.20\HTMLShare**<br>Nur Benutzer "samba" ist berechtigt | Nur Benutzer "samba" hat Zugriffsrechte |
 | Samba | Berechtigung<br>FileShare | Windows Explorer öffnen<br> **\\\10.71.13.20\FileShare**<br>Nur Benutzer "samba2" ist berechtigt | Nur Benutzer "samba2" hat Zugriffsrechte |
 | Firewall | Firewall aktiviert | Firewallstatus überprüfen<br>per SSH verbinden<br>`sudo ufw status` | Die Firewall ist aktiv<br> *Firewall enabled* |
 | Firewall | Port 80 ist offen | Browser öffnen<br>**http://10.71.13.20** | Webseite kann aufgerufen werden |
 | Firewall | Port 445 ist offen | Explorer öffnen<br> **\\\10.71.13.20** | Freigegebene Ordner<br>werden angezeigt |
+
+**Samba Freigabe**  
+![](\Images\SambaShare.png)  
+**Webserver**  
+![](\Images\Webserver.png)
 
 
 ***
