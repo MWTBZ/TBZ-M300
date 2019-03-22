@@ -77,7 +77,7 @@ SHELL
 
 #### Firewall
 Da ich meine VM in einem öffentlichen Netz habe, brauche ich eine Firewall. Damit der Webserver trotzdem noch erreichbar sein muss, erstelle ich eine Regel welche den Port 80 öffnet. Für Samba muss ebenfalls der Port 445 geöffnet werden. Damit man SSH auch benutzen kann, muss ebenfalls noch der Port 22 freigegeben werden.  
-Durch das `-y` kann die Benutzereingabe mitgegeben werden.
+Durch das `-y` dachte kann die Benutzereingabe mitgegeben werden, jedoch geht es hier genau nicht. Man muss also `--force` benutzen.
 ```
 sudo apt-get install ufw
 sudo ufw --force enable
